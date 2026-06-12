@@ -2,23 +2,22 @@ import json
 import time
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
+TASKS = Path("tasks")
+RESULTS = Path("results")
 
-TASKS = BASE / "tasks"
-RESULTS = BASE / "results"
-
-print("Worker1 started")
+print("Worker2 started")
 
 while True:
-    for task_file in TASKS.glob("task*.json"):
+    for task_file in TASKS.glob("research_*.json"):
         try:
             with open(task_file) as f:
                 task = json.load(f)
 
             result = {
                 "task": task.get("task"),
-                "status": "done",
-                "worker": "worker1"
+                "status": "researched",
+                "worker": "worker2",
+                "notes": "research completed"
             }
 
             result_file = RESULTS / task_file.name
