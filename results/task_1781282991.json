@@ -1,0 +1,5 @@
+{
+  "task": "hello worker",
+  "status": "done",
+  "worker": "worker1"
+}
